@@ -21,8 +21,14 @@ structure ParsimonyTest = struct
 
   val tests = suite "Parsimony Tests" [
           suite "Basic parsers" [
-              isParse (ps.pchar #"a") "abc" #"a",
-              isNotParse (ps.pchar #"b") "abc"
+              suite "pchar" [
+                  isParse (ps.pchar #"a") "abc" #"a",
+                  isNotParse (ps.pchar #"b") "abc"
+              ],
+              suite "anyOf" [
+                  isParse (ps.anyOf [#"1", #"2"]) "1" #"1",
+                  isParse (ps.anyOf [#"1", #"2"]) "2" #"2"
+              ]
           ]
       ]
 
