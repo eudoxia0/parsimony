@@ -134,4 +134,10 @@ functor Parsimony(i: PARSIMONY_INPUT): PARSIMONY = struct
             (Parser (fn input => run (!pref) input), pref)
         end
     end
+
+  fun seqL p1 p2 = pmap (fn (a, b) => a) (seq p1 p2)
+
+  fun seqR p1 p2 = pmap (fn (a, b) => b) (seq p1 p2)
+
+  fun between p1 p2 p3 = seqR p1 (seqL p2 p3)
 end

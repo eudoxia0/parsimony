@@ -36,4 +36,7 @@ signature PARSIMONY = sig
   val many1 : 'a parser -> 'a list parser
 
   val wrapper : unit -> ('a parser * 'a parser ref)
+  val seqL : 'a parser -> 'b parser -> 'a parser
+  val seqR : 'a parser -> 'b parser -> 'b parser
+  val between : 'a parser -> 'b parser -> 'c parser -> 'b parser
 end
