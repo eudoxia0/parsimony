@@ -1,8 +1,9 @@
 functor Parsimony(i: PARSIMONY_INPUT): PARSIMONY = struct
   type parser_name = string
+  type pos = i.pos
 
   datatype 'a result = Success of 'a
-                     | Failure of parser_name * i.pos * string
+                     | Failure of parser_name * pos * string
 
   datatype 'a parser = Parser of i.input -> (('a * i.input) result)
 

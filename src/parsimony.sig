@@ -1,7 +1,10 @@
 signature PARSIMONY = sig
   type parser_name
+  type pos
 
-  type 'a result
+  datatype 'a result = Success of 'a
+                     | Failure of parser_name * pos * string
+
   type 'a parser
 
   type input
