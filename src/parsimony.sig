@@ -34,4 +34,6 @@ signature PARSIMONY = sig
 
   val many : 'a parser -> 'a list parser
   val many1 : 'a parser -> 'a list parser
+
+  val wrapper : unit -> ('a parser * 'a parser ref)
 end

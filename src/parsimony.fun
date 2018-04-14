@@ -125,4 +125,13 @@ functor Parsimony(i: PARSIMONY_INPUT): PARSIMONY = struct
                                                        end
                             | (Failure f) => (Failure f))
   end
+
+  fun wrapper () =
+    let val p = Parser (fn input => Failure ("wrapper", i.inputPos input, "Forward reference"))
+    in
+        let val pref = ref p
+        in
+            (Parser (fn input => run (!pref) input), pref)
+        end
+    end
 end
