@@ -20,10 +20,13 @@ structure ParsimonyTest = struct
   (* Tests *)
 
   val tests = suite "Parsimony Tests" [
-          suite "Basic parsers" [
+          suite "Built-in parsers parsers" [
               suite "pchar" [
                   isParse (ps.pchar #"a") "abc" #"a",
                   isNotParse (ps.pchar #"b") "abc"
+              ],
+              suite "or" [
+                  isParse (ps.or (ps.pchar #"b") (ps.pchar #"a")) "abc" #"a"
               ],
               suite "anyOf" [
                   isParse (ps.anyOf [#"1", #"2"]) "1" #"1",
@@ -33,6 +36,9 @@ structure ParsimonyTest = struct
                   isParse (ps.noneOf [#"A", #"B"]) "C" #"C",
                   isNotParse (ps.noneOf [#"A", #"B"]) "A",
                   isNotParse (ps.noneOf [#"A", #"B"]) "B"
+              ],
+              suite "plist" [
+                  isParse (ps.plist [ps.pchar #"a", ps.pchar #"b"]) "ab" [#"a", #"b"]
               ]
           ]
       ]
