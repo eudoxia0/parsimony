@@ -28,6 +28,11 @@ structure ParsimonyTest = struct
               suite "anyOf" [
                   isParse (ps.anyOf [#"1", #"2"]) "1" #"1",
                   isParse (ps.anyOf [#"1", #"2"]) "2" #"2"
+              ],
+              suite "noneOf" [
+                  isParse (ps.noneOf [#"A", #"B"]) "C" #"C",
+                  isNotParse (ps.noneOf [#"A", #"B"]) "A",
+                  isNotParse (ps.noneOf [#"A", #"B"]) "B"
               ]
           ]
       ]
