@@ -17,6 +17,16 @@ structure ParsimonyTest = struct
                                         | ps.Failure _ => Pass)
                             str
 
+  (* Test parsers *)
+
+  val digitParser = ps.anyOf [#"0", #"1", #"2", #"3", #"4", #"5", #"6", #"7", #"8", #"9"]
+
+  fun parseInt str = case (Int.fromString str) of
+                         SOME i => i
+                       | NONE => raise Match
+
+  val naturalParser = ps.pmap (parseInt o String.implode) (ps.many1 digitParser)
+
   (* Tests *)
 
   val tests = suite "Parsimony Tests" [
@@ -40,6 +50,10 @@ structure ParsimonyTest = struct
               suite "plist" [
                   isParse (ps.plist [ps.pchar #"a", ps.pchar #"b"]) "ab" [#"a", #"b"]
               ]
+          ],
+          suite "Digit parsers" [
+              isParse digitParser "1" #"1",
+              isParse naturalParser "123" 123
           ]
       ]
 
