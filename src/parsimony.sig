@@ -26,6 +26,8 @@ signature PARSIMONY = sig
 
   val anyOf : char list -> char parser
   val noneOf : char list -> char parser
+  val anyOfString : string -> char parser
+  val noneOfString : string -> char parser
 
   val opt : 'a parser -> 'a option parser
   val optV : 'a parser -> 'a -> 'a parser

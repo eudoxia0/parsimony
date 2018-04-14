@@ -92,6 +92,10 @@ functor Parsimony(i: PARSIMONY_INPUT): PARSIMONY = struct
   fun noneOf chars =
     satisfy (fn char => not (Option.isSome (List.find (fn c => c = char) chars)))
 
+  fun anyOfString s = anyOf (String.explode s)
+
+  fun noneOfString s = noneOf (String.explode s)
+
   fun opt p =
     Parser (fn input => case (run p input) of
                             (Success (v, input')) => (Success (SOME v, input'))
