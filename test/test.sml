@@ -80,7 +80,7 @@ structure ParsimonyTest = struct
   (* Tests *)
 
   val tests = suite "Parsimony Tests" [
-          suite "Built-in parsers parsers" [
+          suite "Built-in parsers" [
               suite "pchar" [
                   isParse (ps.pchar #"a") "abc" #"a",
                   isNotParse (ps.pchar #"b") "abc"
