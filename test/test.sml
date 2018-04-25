@@ -99,6 +99,9 @@ structure ParsimonyTest = struct
               ],
               suite "plist" [
                   isParse (ps.plist [ps.pchar #"a", ps.pchar #"b"]) "ab" [#"a", #"b"]
+              ],
+              suite "pstring" [
+                  isParse (ps.pstring "test") "test" "test"
               ]
           ],
           suite "Custom parsers" [
