@@ -109,6 +109,8 @@ functor Parsimony(i: PARSIMONY_INPUT): PARSIMONY = struct
                            end
     | plist nil = preturn nil
 
+  fun pstring str = pmap implode (plist (map pchar (explode str)))
+
   local
       fun many' p input =
         case (run p input) of

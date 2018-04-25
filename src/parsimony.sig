@@ -33,6 +33,7 @@ signature PARSIMONY = sig
   val optV : 'a parser -> 'a -> 'a parser
 
   val plist : 'a parser list -> 'a list parser
+  val pstring : string -> string parser
 
   val many : 'a parser -> 'a list parser
   val many1 : 'a parser -> 'a list parser
