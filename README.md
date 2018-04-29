@@ -1,8 +1,13 @@
 # Parsimony
 
-# Overview
+**Parsimony** is a parser combinator library for Standard ML.
 
-## Example Session
+It features:
+
+- Source location tracking.
+- Extensive example code.
+
+# Example Session
 
 In lieu of a 'Hello, World!' example, here is an example of using Parsimony in
 an interactive SML/NJ session (output elided/edited as needed):
