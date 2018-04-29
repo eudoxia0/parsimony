@@ -248,13 +248,30 @@ Like `anyOf`, but a string is used instead of a list of characters for brevity.
 
 ### Function `optV`
 
+### Function `seqL`
 
+Like `seq`, but only returns the result of the first parser.
+
+### Function `seqR`
+
+Like `seq`, but only returns the result of the second parser.
+
+### Function `between`
+
+Given three parsers, it parses them all in sequence, but returns the value in
+the middle. Useful, for instance, to parse a value wrapped in parentheses.
 
 ## The `Parsimony` Functor
 
 The `Parsimony` functor takes a structure implementing the `PARSIMONY_INPUT`
 signature and returns a structure containing Parsimony's parsers specialized for
 the input structure.
+
+### Examples
+
+~~~sml
+val p = Parsimony(ParsimonyStringInput)
+~~~
 
 # License
 
