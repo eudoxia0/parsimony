@@ -91,13 +91,65 @@ ps.run quotedString (ParsimonyStringInput.fromString "\"test \\\"inner\\\" test\
 (* val it = Success ("test \"inner\" test",-) *)
 ~~~
 
-## S-Expressions
-
 # API Reference
 
-## The `INPUT` Signature
+## The `PARSIMONY_INPUT` Signature
+
+### Synopsis
+
+~~~sml
+signature PARSIMONY_INPUT = sig
+  type pos
+
+  val posLine : pos -> int
+  val posCol : pos -> int
+
+  type input
+
+  val inputHead : input -> char option
+  val inputRest : input -> input
+  val inputPos : input -> pos
+
+  val fromString : string -> input
+end
+~~~
+
+### Type `pos`
+
+Values of this type represent a position in the input.
+
+### Function `posLine`
+
+Given a position, return its line number. Lines are counted starting at 1.
+
+### Function `posCol`
+
+Given a position, return its column number. Columns are counted starting at 1.
+
+### Type `input`
+
+Values of this type represent an input stream with position tracking.
+
+### Function `inputHead`
+
+Return the first character of the input, or `NONE` if the input is empty.
+
+### Function `inputRest`
+
+Return a new input that contains the all but the current head character.
+
+### Function `inputPos`
+
+Return the current position in the input.
+
+### Function `fromString`
+
+Given a string, return an `input` value.
 
 ## The `ParsimonyStringInput` Structure
+
+The `ParsimonyStringInput` structure implements the `PARSIMONY_INPUT` signature
+for string input streams.
 
 ## The `PARSIMONY` Signature
 
