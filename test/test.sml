@@ -102,6 +102,10 @@ structure ParsimonyTest = struct
               ],
               suite "pstring" [
                   isParse (ps.pstring "test") "test" "test"
+              ],
+              suite "many" [
+                  isParse (ps.many (ps.pchar #"a")) "aaa" [#"a", #"a", #"a"],
+                  isParse (ps.many (ps.pchar #"a")) "aab" [#"a", #"a"]
               ]
           ],
           suite "Custom parsers" [
