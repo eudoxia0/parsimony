@@ -36,6 +36,8 @@ val it = Success (#"1",-) : (char * ps.input) ps.result
 
 # Examples
 
+Run `make examples` to load these into an interactive SML/NJ session.
+
 ## Natural Numbers
 
 ~~~sml
@@ -246,7 +248,13 @@ Like `anyOf`, but a string is used instead of a list of characters for brevity.
 
 ### Function `opt`
 
+Try to run the given parser, if it succeds, return `SOME x`, otherwise, return
+`NONE`.
+
 ### Function `optV`
+
+Like `opt`, but instead of using an `option` value, you provide a default value
+to use in the failure case.
 
 ### Function `seqL`
 
