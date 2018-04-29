@@ -106,6 +106,15 @@ structure ParsimonyTest = struct
               suite "many" [
                   isParse (ps.many (ps.pchar #"a")) "aaa" [#"a", #"a", #"a"],
                   isParse (ps.many (ps.pchar #"a")) "aab" [#"a", #"a"]
+              ],
+              suite "seqL" [
+                  isParse (ps.seqL (ps.pchar #"a") (ps.pchar #"b")) "ab" #"a"
+              ],
+              suite "seqR" [
+                  isParse (ps.seqR (ps.pchar #"a") (ps.pchar #"b")) "ab" #"b"
+              ],
+              suite "between" [
+                  isParse (ps.between (ps.pchar #"a") (ps.pchar #"b") (ps.pchar #"c")) "abc" #"b"
               ]
           ],
           suite "Custom parsers" [
