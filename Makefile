@@ -13,5 +13,8 @@ tests: $(MLB_TEST_FILE)
 	$(MLTON) $(MLB_TEST_FILE)
 	./$(TEST_BIN)
 
+examples:
+	$(SML) $(SMLFLAGS) $(CM_FILE) example/infix.sml
+
 clean:
 	rm $(TEST_BIN)
