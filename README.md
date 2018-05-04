@@ -4,6 +4,7 @@
 
 It features:
 
+- Pluggable inputs.
 - Source location tracking.
 - Extensive example code.
 
