@@ -69,7 +69,9 @@ functor Parsimony(i: PARSIMONY_INPUT): PARSIMONY = struct
                                                 (Success s) => (Success s)
                                               | (Failure f) => (Failure f)))
 
-  fun choice ps = List.foldr (fn (a, b) => or a b) pfail ps
+  fun choice (a::b::rest) = or a (choice (b::rest))
+    | choice [a] = a
+    | choice nil = raise Fail "choice must be given a non-empty list"
 
   fun satisfy f =
     Parser (fn input => let val p = i.inputPos input
